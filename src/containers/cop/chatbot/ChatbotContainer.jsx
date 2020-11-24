@@ -4,8 +4,13 @@ import PropTypes from 'prop-types'
 import { ThemeProvider } from 'styled-components';
 import { context as c } from '../../../modules/context'
 import axios from 'axios'
+// import { m } from 'framer-motion';
 
-class Recommend extends Component {
+
+
+// const user_id = sessionStorage.getItem('sessionUser')
+
+class Review extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -16,16 +21,24 @@ class Recommend extends Component {
 
     componentWillMount() {
         const { steps } = this.props;
-        const { tasty, texture } = steps
-        this.setStatue({ tasty, texture })
+        const { chatbot_id, user_id, tasty, texture } = steps
+        this.setState({ chatbot_id, user_id, tasty, texture })
     }
     render () {
-        const { tasty, texture } = this.state
+        const { chatbot_id, user_id, tasty, texture } = this.state
         return (
             <div style={{ width: '100%' }}>
-                <h3>설문조사 내역</h3>
+                <h1>[설문조사 내역]</h1>
                 <table>
                     <tbody>
+                        <tr>
+                            <td>챗봇 번호</td>
+                            <td>{chatbot_id.value}</td>
+                        </tr>
+                        <tr>
+                            <td>사용자 ID</td>
+                            <td>{user_id.value}</td>
+                        </tr>
                         <tr>
                             <td>선호하는 맛</td>
                             <td>{tasty.value}</td>
@@ -40,10 +53,10 @@ class Recommend extends Component {
         )
     }
 }
-Recommend.propsTypes = {
+Review.propsTypes = {
     steps: PropTypes.object,
 }
-Recommend.defaultProps = {
+Review.defaultProps = {
     step: undefined,
 }
 
@@ -56,8 +69,9 @@ class Answer extends Component {
     }
     componentWillMount() {
         const {steps} = this.props
-        const { tasty, texture } = steps
-        axios.post(`${c.url}/api/mypage`, { "tasty": tasty.value, "texture": texture.value })
+        const { chatbot_id, user_id, tasty, texture } = steps
+        axios.post(`${c.url}/api/chatbot`, 
+        { "chatbot_id": chatbot_id.value, "tasty": tasty.value, "texture": texture.value, "user_id": user_id.value})
         .then(res => {
             alert("성공")
         })
@@ -162,52 +176,33 @@ class MyChatbot extends Component {
                     {
                         id: 'question1',
                         message: '치즈나 음식의 어떤 맛을 선호하시나요?',
-                        trigger: 'quedstion2',
+                        trigger: 'tasty',
                     },
                     {
-                        id: 'quedstion2',
+                        id: 'tasty',
                         options: [
-                            { value: 1, label: '단맛', trigger: 'question3' },
-                            { value: 2, label: '짠맛', trigger: 'question3' },
-                            { value: 3, label: '신맛', trigger: 'question3' },
-                            { value: 3, label: '쓴맛', trigger: 'question3' },
-                            { value: 3, label: '담백한 맛', trigger: 'question3' },
+                            { value: 1, label: '단맛', trigger: 'question2' },
+                            { value: 2, label: '짠맛', trigger: 'question2' },
+                            { value: 3, label: '신맛', trigger: 'question2' },
+                            { value: 4, label: '쓴맛', trigger: 'question2' },
+                            { value: 5, label: '담백한 맛', trigger: 'question2' },
                         ],
                     },
                     {
-                        id: 'question3',
+                        id: 'question2',
                         message: '치즈에 어떤 경도를 좋아하시나요?',
-                        // trigger: 'question4',
+                        trigger: 'texture',
+
                     },
-                    // {
-                    //     id: 'recommend5',
-                    //     options: [
-                    //         { value: 1, label: '네. 치츠 추천 받으러 갈게요!', trigger: 'recommend1' },
-                    //         { value: 2, label: '아니요. 그냥 치즈 상품 구경하러 갈게요!', trigger: 'cheeseList' },
-                    //         { value: 3, label: '다른 치즈 종류도 궁금해요!', trigger: 'category' },
-                    //     ],
-                    // },
-                    // {
-                    //     id: 'recommend1',
-                    //     message: '그러면 고객님의 치즈 취향을 분석해보겠습니다. 총 5가지의 질문을 드리겠습니다!',
-                    //     trigger: 'itemSearchResult',
-                    // },
-                    // {
-                    //     id: 'category',
-                    //     message: '제품명을 입력하세요',
-                    //     trigger: 'itemSearch',
-                    // },
-                    // {
-                    //     id: 'category',
-                    //     options: [
-                    //         { value: 1, label: '리코타', trigger: 'itemSearch' },
-                    //         { value: 2, label: '파마산', trigger: 'itemSearch' },
-                    //         { value: 3, label: '모짜렐라', trigger: 'itemSearch' },
-                    //         { value: 4, label: '블루치즈', trigger: 'itemSearch' },
-                    //         { value: 5, label: '체다', trigger: 'itemSearch' },
-                    //         { value: 6, label: '브리', trigger: 'itemSearch' }
-                    //     ],
-                    // },
+                    {
+                        id: 'texture',
+                        options: [
+                            { value: 1, label: '후레쉬', trigger: 'chatbot_number' },
+                            { value: 2, label: '소프트', trigger: 'chatbot_number' },
+                            { value: 3, label: '세미하드', trigger: 'chatbot_number' },
+                            { value: 4, label: '하드', trigger: 'chatbot_number' },
+                        ],
+                    },
                     {
                         id: 'category',
                         options: [
@@ -278,6 +273,68 @@ class MyChatbot extends Component {
                         id: 'fareResult',
                         component: <ItemSearch2/>,
                         trigger: '1',
+                    },
+                    {
+                        id: 'chatbot_number',
+                        message: '고객님의 챗봇 번호를 입력해주세요.',
+                        trigger: 'chatbot_id'
+                    },
+                    {
+                        id: 'chatbot_id',
+                        user: true,
+                        trigger: 'user_number'
+                    },
+                    {
+                        id: 'user_number',
+                        message: '고객 아이디를 적어주세요.',
+                        trigger: 'user_id'
+                    },
+                    {
+                        id: 'user_id',
+                        user: true,
+                        trigger: 'review'
+                    },
+                    {
+                        id: 'review',
+                        component: <Review/>,
+                        asMessage: true,
+                        trigger: 'update',
+                    },
+                    {
+                        id: 'update',
+                        message: '결과를 확인하시겠습니까?',
+                        trigger: 'update_question'
+                    },
+                    // {
+                    //     id: 'update_question',
+                    //     options: [
+                    //         { value: 'yes', label: '아니오. 수정할게요.', trigger: 'update_yes'},
+                    //         { value: 'no', label: '예', trigger: 'end-message'},
+                    //     ],
+                    // },
+                    // {
+                    //     id: 'update_yes',
+                    //     message: '어떤 정보를 수정하시겠습니까?',
+                    //     trigger: 'update-fields',
+                    // },
+                    // {
+                    //     id: 'update-fields',
+                    //     options: [
+                    //         {}
+                    //     ]
+                    // },
+                    {
+                        id: 'update_question',
+                        options: [
+                            { value: 'no', label: '결과보러 가기', trigger: 'end-message'}
+                        ],
+                    },
+                    {
+                        id: 'end-message',
+                        component: <Answer/>,
+                        waitAction: true,
+                        asMessage: true,
+                        end: true,
                     },
                 ]}
             />

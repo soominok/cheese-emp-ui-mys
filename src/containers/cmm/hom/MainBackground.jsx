@@ -40,16 +40,13 @@ export default function BackgroundAsImageWithCenteredContent() {
         <HeroContainer>
           <Content>
             <Heading>
-                {/* 메인페이지 & 로그인/회원가입
-                <br />
-                설문지, 상품 리스트 페이지 */}
+                <h1>Find Your Cheese !</h1>
+                나에게 맞는 치즈를 추천 받아보세요!
             </Heading>
-            {/* <PrimaryAction href="/components/blocks/Pricing/ThreePlansWithHalfPrimaryBackground">
-              Find Your Cheese !
-            </PrimaryAction> */}
+            <br/>
             <Actions>
               <input type="text" placeholder="Your E-mail Address" />
-              <button>Get Started</button>
+              <button>지금 시작하기</button>
             </Actions>
           </Content>
         </HeroContainer>
@@ -57,3 +54,4 @@ export default function BackgroundAsImageWithCenteredContent() {
     </div>
   );
 };
+
