@@ -141,7 +141,7 @@ const fetchOneUser = () => {
         </Typography> <br/>
         <form className={classes.form} noValidate>
           <Grid container spacing={3}>
-          {/* <Grid item xs={10} sm={5} >
+          <Grid item xs={10} sm={5} >
             <h1>ID</h1>
           </Grid>
           <Grid item xs={12} sm={5}>
@@ -162,7 +162,7 @@ const fetchOneUser = () => {
             <Button variant="contained" color="primary" onClick = {e => edit("name")}>
               Edit
             </Button>
-          </Grid> */}
+          </Grid>
           <Grid item xs={10} sm={5} >
             <h1>Name</h1>
           </Grid>

@@ -28,7 +28,7 @@ export default function App(){
                     <Route path='/membership-withdrawal' component={ UserWithdrawal }/>
                     <Route path='/userlist' component={ UserList }/> */}
 
-                    <Route path='/survey' component={Recommend}></Route>
+                    <Route path='/recommend' component={Recommend}></Route>
                     <Route path='/cheese' component={Cheese}></Route>
                     <Route path='/review' component={Review}></Route>
 

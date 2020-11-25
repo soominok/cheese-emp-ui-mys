@@ -9,8 +9,8 @@ import { ChatbotContainer as Chatbot } from "../containers/cop/chatbot"
 import FAQ from "../containers/cmm/hom/Faq.jsx";
 import Tooltip from '@material-ui/core/Tooltip'
 
-  const Subheading = tw.span`uppercase tracking-widest font-bold text-primary-500`;
-  const HighlightedText = tw.span`text-primary-500`;
+  const Subheading = tw.span`uppercase tracking-widest mx-10 font-bold text-primary-500`;
+  const HighlightedText = tw.span`text-primary-500 mx-10 `;
 
 export default function Home () {
   return( <div className="home">

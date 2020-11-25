@@ -136,7 +136,13 @@ export default function SignUp () {
                     <FormControlLabel value="M" control={<Radio />} label="Male" />
                   </RadioGroup>
 
-                  <Select options={options} placeholder="Age" name="age" value={user.age} onChange={handleChange} />
+                  {/* <Select options={options} placeholder="Age" name="age" value={user.age} onChange={handleChange} /> */}
+
+                  <Input type="text" placeholder="Age" name="age" value={user.age} onChange={handleChange}
+                  className={'form-control' + (submitted && !user.name ? 'is-invalid' : '')}/>
+                  {submitted && !user.name &&
+                      <div className="invalid-feedback">User Name is required</div>
+                  }
 
 
                   <Input type="text" placeholder="Tel" name="phone" value={user.phone} onChange={handleChange} 

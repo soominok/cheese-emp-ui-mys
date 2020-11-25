@@ -80,7 +80,7 @@ export const userService = {
         data: user,
         auth: c.auth
     }
-    alert('user service req: ' + JSON.stringify(req))
+    // alert('user service req: ' + JSON.stringify(req))
     const resp = await axios(req)
     // alert('user service resp: ' + resp)
     const data = resp.data
@@ -91,7 +91,7 @@ export const userService = {
   async function update(user_id, password, name, gender, age, phone, email) {
     const req = {
         method: c.post,
-        url: `${c.url}/api/signup`,
+        url: `${c.url}/api/user`,
         data: {user_id:user_id, password:password, name:name, gender: gender, age: age, phone:phone, email:email },
         auth: c.auth
     }

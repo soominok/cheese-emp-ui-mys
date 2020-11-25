@@ -2,15 +2,14 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
+// import cheese_main_img from "../../../components/cmm/images/cheese/cheese_main.png"
 
 
-// const PrimaryLink = tw(PrimaryLinkBase)`rounded-full`
 const Container = styled.div`
   ${tw`relative -mx-8 -mt-8 bg-center bg-cover h-screen min-h-144`}
   background-image: url("https://post-phinf.pstatic.net/MjAyMDA2MDNfMjE4/MDAxNTkxMTQ4ODg0MzY5.MjSnIId_fn5_Cqe07p8FaJvzRbCrJZsECjfm2e6CHOsg.HKKfGRtpu4XehJI2yo9qyJ3Rm5zUn8pPa46WONNboNUg.JPEG/%EC%9C%A0%EC%96%B4%EB%84%A4%EC%9D%B4%ED%82%A4%EB%93%9C%EC%B9%98%EC%A6%88_%282%29.jpg?type=w1200");
 `;
 
-// const OpacityOverlay = tw.div`z-10 absolute inset-0 bg-black opacity-75`;
 
 const HeroContainer = tw.div`z-20 relative px-6 sm:px-8 mx-auto h-full flex flex-col`;
 const Content = tw.div`px-4 flex flex-1 flex-col justify-center items-center`;

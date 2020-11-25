@@ -184,7 +184,7 @@ const Header = (props, { roundedHeaderButton = false, logoLink, links, className
         <NavLink href="/review">Review</NavLink>
         </Tooltip>
         <Tooltip title="챗봇을 통해 추천 받은 치즈 카테고리와 함께 치즈 상품 2~3개 추천 리스트 보여주는 기능(모델링 적용)">
-          <NavLink href="/survey">추천</NavLink>
+          <NavLink href="/recommend">추천</NavLink>
         </Tooltip>
         {/* <Tooltip title="구독 상품과 치즈 상품을 구매할 수 있는 장바구니 기능">
           <NavLink href="/cart" onClick={handleClose}>장바구니</NavLink>
