@@ -210,7 +210,7 @@ class MyChatbot extends Component {
                     },
                     {
                         id: 'recommend2',
-                        message: '그러면 고객님의 치즈 취향을 분석해보겠습니다. 총 5가지의 질문을 드리겠습니다!',
+                        message: '그러면 고객님의 치즈 취향을 분석해보겠습니다. 몇 가지 질문을 드리겠습니다!',
                         trigger: 'question1',
                     },
                     {

@@ -141,7 +141,7 @@ const Header = (props, { roundedHeaderButton = false, logoLink, links, className
         <NavLink href="/review">Review</NavLink>
         <NavLink href="/recommend">추천</NavLink>
         {/* <NavLink href="/cart"><CartIcon/>Cart ({itemCount})</NavLink> */}
-        <NavLink href="/cart">Cart</NavLink>
+        {/* <NavLink href="/cart">Cart</NavLink> */}
         <NavLink href="/user-info" tw="lg:ml-20!">My Page</NavLink>
         {/* <NavLink ref={anchorRef} aria-controls={open ? 'menu-list-grow' : undefined} aria-haspopup="true" onClick={handleToggle} tw="lg:ml-20!">My Page
           <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>

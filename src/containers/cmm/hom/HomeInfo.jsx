@@ -45,32 +45,30 @@ export default function VerticalWithAlternateImageAndText() {
     {
       imageSrc:
         "https://img-cf.kurly.com/shop/data/goods/1515396236580l0.jpg",
-      subtitle: "후레쉬",
-      title: "부라타치즈",
       description:
-        "부라타 치즈는 프레시 모짜렐라 치즈와 이탈리아산 크림을 섞어 만듭니다. 신선한 우유의 맛과 버터처럼 보드라운 질감을 가진 치즈입니다. 마치 버터처럼 쫄깃하기보다는 부드럽습니다. 부라타 치즈는 담백하면서도 고소하고 은은하게 단맛이 감돌기 때문에 ",
+        "안녕하세요",
+      title: "치즈 큐레이션",
+      subtitle: "띵동 설레는 소리, 매월 선물처럼 나만의 치즈를 안전하게 집에서 받을 수 있습니다. ",        
+      url: "https://timerse.com"
+    },
+    {
+      imageSrc:
+        "https://img-cf.kurly.com/shop/data/goodsview/20170222/gv40000000201_1.jpg",
+      description: "안녕하세요",
+      title: "AI가 추천해주는",
+      subtitle: "Pic 2 Cheese가 엄선하고 AI가 매칭해주는 큐레이션",
+      url: "https://timerse.com"
+    },
+    {
+      imageSrc:
+        "https://img-cf.kurly.com/shop/data/goods/158492969355l0.jpg",
+      description:
+        "안녕하세요",
+      title: "매 월 선물처럼",
+      subtitle: "지금 바로 구독신청하고 다양한 치즈를 경험하세요.",
       url: "https://timerse.com"
     },
 
-    {
-      imageSrc:
-        "https://img-cf.kurly.com/shop/data/goods/1544576315159l0.jpg",
-      subtitle: "후레쉬",
-      title: "모짜렐라 카우",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      url: "https://timerse.com"
-    },
-
-    {
-      imageSrc:
-        "https://img-cf.kurly.com/shop/data/goods/1566382934703l0.jpg",
-      subtitle: "후레쉬",
-      title: "덴마크 브리 치즈",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      url: "https://timerse.com"
-    }
   ];
 
   return (
@@ -78,11 +76,12 @@ export default function VerticalWithAlternateImageAndText() {
       <SingleColumn>
         <HeadingInfoContainer>
           {/* <HeadingTitle>Find Your Cheese !</HeadingTitle> */}
-          <HeadingTitle>이런 치즈는 어떠신가요?</HeadingTitle>
+          <HeadingTitle>오늘부터 치즈는 특별하고 의미있게</HeadingTitle>
           <HeadingDescription>
             처음 방문하셨나요?<br/>
-            먼저 챗봇에서 개인 취향 분석을 해주세요!<br/>
-            아래의 치즈들은 가장 많이 구매한 치즈들입니다
+            먼저 챗봇에서 개인 취향 분석을 해보세요! <br/>
+            당신에게 꼭 맞는 서비스를 추천해 드립니다.
+
           </HeadingDescription>
         </HeadingInfoContainer>
 
@@ -91,10 +90,10 @@ export default function VerticalWithAlternateImageAndText() {
             <Card key={i} reversed={i % 2 === 1}>
               <Image imageSrc={card.imageSrc} />
               <Details>
-                <Subtitle>{card.subtitle}</Subtitle>
+              <Description>{card.description}</Description>
                 <Title>{card.title}</Title>
-                <Description>{card.description}</Description>
-                <Link href={card.url}>See Event Details</Link>
+                <Subtitle>{card.subtitle}</Subtitle>
+                <Link href={card.url}>See Details </Link>
               </Details>
             </Card>
           ))}

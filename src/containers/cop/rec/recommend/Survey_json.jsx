@@ -68,7 +68,7 @@ export var json = {
         //     {type: "text", name: "email", title: "Your e-mail"}]
         // }
     ],
-    completedHtml:"고객님의 치즈 취향을 분석 중입니다."
+    completedHtml:"당신이 좋아하는 치즈상품은 <br/> <b>[브리미] 보코치니<br/>입니다. "
 };
 
 
