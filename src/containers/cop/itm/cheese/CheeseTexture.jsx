@@ -71,7 +71,7 @@ export default function CheeseTexture({
         price: "$5.99",
         rating: "5.0",
         reviews: "87",
-        url: "#"
+        // url: "#",
       },
       {
         imageSrc:
@@ -81,7 +81,7 @@ export default function CheeseTexture({
         price: "$2.99",
         rating: "4.8",
         reviews: "32",
-        url: "#"
+        // url: "#"
       },
       {
         imageSrc:
@@ -91,7 +91,7 @@ export default function CheeseTexture({
         price: "$7.99",
         rating: "4.9",
         reviews: "89",
-        url: "#"
+        // url: "#"
       },
       {
         imageSrc:
@@ -101,7 +101,7 @@ export default function CheeseTexture({
         price: "$8.99",
         rating: "4.6",
         reviews: "12",
-        url: "#"
+        // url: "#"
       },
       {
         imageSrc:
@@ -171,7 +171,7 @@ export default function CheeseTexture({
         title: "[카스텔로]카스텔로",
         content: "Chilli Crispy Nachos",
         price: "$3.99",
-        rating: "3.9",
+        rating: "3.9",    
         reviews: "26",
         url: "#"
       },
@@ -461,7 +461,7 @@ export default function CheeseTexture({
                       }}
                       transition={{ duration: 0.3 }}
                     >
-                      <CardButton>Buy Now</CardButton>
+                      <CardButton onClick={function() {alert('장바구니에 담겼습니다.')}}>Buy Now</CardButton>
                     </CardHoverOverlay>
                   </CardImageContainer>
                   <CardText>

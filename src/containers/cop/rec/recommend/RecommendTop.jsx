@@ -13,10 +13,11 @@ import { SectionHeading } from "../../../../components/cmm/Headings.jsx";
 import { SectionDescription } from "../../../../components/cmm/Typography.jsx";
 import { PrimaryButton as PrimaryButtonBase } from "../../../../components/cmm/Buttons.jsx";
 // import logoImageSrc from "../images/logo-light.svg";
-import serverIllustrationImageSrc from "../../../../components/cmm/images/server-illustration-2.svg";
+// import serverIllustrationImageSrc from "../../../../components/cmm/images/server-illustration-2.svg";
+import RecommendSurvey from "./RecommendSurvey"
 
-const PrimaryBackgroundContainer = tw.div`-mx-8 px-8 mt-16 mb-10 lg:mt-0 lg:ml-16 bg-white text-gray-100`;
-const Container = tw(ContainerBase)`my-32 mx-16`;
+const PrimaryBackgroundContainer = tw.div`-mx-8 px-8 mt-16 mb-20 lg:mt-0 lg:ml-16 bg-white text-gray-100`;
+const Container = tw(ContainerBase)`mt-10 mb-48 mx-16`;
 const Row = tw.div`flex items-center flex-col lg:flex-row`;
 const Column = tw.div`lg:w-1/2`;
 const TextColumn = tw.div`text-center lg:text-left`;
@@ -45,12 +46,13 @@ export default function RecommendTop ({
               <TextColumn>
                 <Heading>{heading}</Heading>
                 <Description>{description}</Description>
-                <PrimaryButton as="a" href={primaryButtonUrl}>{primaryButtonText}</PrimaryButton>
+                {/* <PrimaryButton as="a" href={primaryButtonUrl}>{primaryButtonText}</PrimaryButton> */}
               </TextColumn>
               {/* <IllustrationColumn>
                 <Image src={imageSrc} />
               </IllustrationColumn> */}
             </Row>
+            <RecommendSurvey/>
           </ContentWithVerticalPadding>
         </Container>
       </Content2Xl>

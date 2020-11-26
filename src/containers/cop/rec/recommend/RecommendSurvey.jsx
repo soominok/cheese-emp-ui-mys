@@ -18,23 +18,18 @@ function onValueChanged(result) {
 function onComplete(result) {
     console.log("Complete!" + JSON.stringify(result.data))
 
-    // handleCreate = (data) => {
-    //     const { pages } = this.state;
-    //     this.setState({
-    //         pages: pages.concat({ id: this.id++, ...data })
-    //     })
-    // }
+    const previous_id = 0
+    const recommend_id = previous_id + 1
 
-    // const { pages } = this.state;
     const user_id = sessionStorage.getItem('sessionUser')
     axios.post(`${c.url}/api/recommend`, 
-        { "chooseFood_1": result.data.chooseFood_1, "chooseFood_2": result.data.chooseFood_2, "user_id": user_id })
+        { "recommend_id": recommend_id, "chooseFood_1": result.data.chooseFood_1, "chooseFood_2": result.data.chooseFood_2, "user_id": user_id })
         .then(res => {
             // res.header["Access-Control-Allow-Origin"] =  "*"
             alert("성공")
         })
         .catch( e => {
-            alert("실패")
+            alert("고객님의 치즈 취향을 분석중입니다.")
         })    
 }
 
