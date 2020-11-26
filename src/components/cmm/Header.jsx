@@ -9,7 +9,7 @@ import { history } from '../../modules/history' //eslint-disable-line
 
 import useAnimatedNavToggler from "./AnimatedNavToggler";
 
-import logo from "./images/cheese/cheese-logo.png";
+import logo from "./images/cheese/cheese_img.png";
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 import {CartIcon} from '../../containers/cop/cart/Icons' //eslint-disable-line
@@ -43,7 +43,7 @@ const HeaderBlock = tw.header`
   max-w-screen-xl mx-auto pt-3 pb-3
 `;
 
-const NavLinks = tw.div`inline-block`;
+const NavLinks = tw.div`inline-block -mx-8`;
 
 const NavLink = tw.a`
   text-lg my-2 lg:text-sm lg:mx-6 lg:my-0
@@ -139,7 +139,7 @@ const Header = (props, { roundedHeaderButton = false, logoLink, links, className
         <NavLink href="/" >홈</NavLink>
         <NavLink href="/cheese">치즈</NavLink>
         <NavLink href="/review">Review</NavLink>
-        <NavLink href="/survey">추천</NavLink>
+        <NavLink href="/recommend">추천</NavLink>
         {/* <NavLink href="/cart"><CartIcon/>Cart ({itemCount})</NavLink> */}
         <NavLink href="/cart">Cart</NavLink>
         <NavLink href="/user-info" tw="lg:ml-20!">My Page</NavLink>

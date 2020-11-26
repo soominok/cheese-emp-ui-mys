@@ -3,7 +3,7 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
-import LogoImage from "./images/cheese-logo.png";
+import LogoImage from "./images/cheese/cheese_img.png";
 // import LogoImage from "../../images/cheeseLogo.svg";
 import { ReactComponent as FacebookIcon } from "./images/facebook-icon.svg";
 import { ReactComponent as TwitterIcon } from "./images/twitter-icon.svg";

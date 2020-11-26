@@ -12721,6 +12721,11 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
   integrity sha1-tf3AjxKH6hF4Yo5BXiUTK3NkbG0=
 
+simple-react-modal@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/simple-react-modal/-/simple-react-modal-0.5.1.tgz#a32bce2418d527a48dfe1b7cc343c7a57a00af10"
+  integrity sha1-oyvOJBjVJ6SN/ht8w0PHpXoArxA=
+
 simple-swizzle@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/simple-swizzle/-/simple-swizzle-0.2.2.tgz#a4da6b635ffcccca33f70d17cb92592de95e557a"
@@ -13323,6 +13328,11 @@ supports-color@^7.0.0, supports-color@^7.1.0:
   integrity sha512-oRSIpR8pxT1Wr2FquTNnGet79b3BWljqOuoW/h4oBhxJ/HUbX5nX6JSruTkvXDCFMwDPvsaTTbvMLKZWSy0R5g==
   dependencies:
     has-flag "^4.0.0"
+
+survey-react@^1.8.17:
+  version "1.8.17"
+  resolved "https://registry.yarnpkg.com/survey-react/-/survey-react-1.8.17.tgz#474e958b4a69ecd7dac478ead163ca24c12e4ada"
+  integrity sha512-LMg9LSfVdXL9BCe/9uDYgQtUFiJB3oTzb0TTvHrNe3iyBVUBg1sB2JwegmHg1qqupXsOHK9Yx3tlAXM5/k3YBg==
 
 svg-parser@^2.0.0:
   version "2.0.4"
