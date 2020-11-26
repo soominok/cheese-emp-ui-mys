@@ -18,12 +18,9 @@ function onValueChanged(result) {
 function onComplete(result) {
     console.log("Complete!" + JSON.stringify(result.data))
 
-    const previous_id = 0
-    const recommend_id = previous_id + 1
-
     const user_id = sessionStorage.getItem('sessionUser')
     axios.post(`${c.url}/api/recommend`, 
-        { "recommend_id": recommend_id, "chooseFood_1": result.data.chooseFood_1, "chooseFood_2": result.data.chooseFood_2, "user_id": user_id })
+        { "user_id": user_id, "chooseFood_1": result.data.chooseFood_1, "chooseFood_2": result.data.chooseFood_2 })
         .then(res => {
             // res.header["Access-Control-Allow-Origin"] =  "*"
             alert("성공")
@@ -33,35 +30,70 @@ function onComplete(result) {
         })    
 }
 
+var resultId = 'result_id'
+
+var surveySendResult = function (result) {
+    console.log("Complete!" + JSON.stringify(result.data))
+
+    const user_id = sessionStorage.getItem('sessionUser')
+    axios.post(`${c.url}/api/recommend`, 
+        { "user_id": user_id, "chooseFood_1": result.data.chooseFood_1, "chooseFood_2": result.data.chooseFood_2 })
+        .then(res => {
+            // res.header["Access-Control-Allow-Origin"] =  "*"
+            alert("성공")
+        })
+        .catch( e => {
+            alert("고객님의 치즈 취향을 분석중입니다.")
+        })    
+}
+
+var surveyGetResult = function (s, options) {
+    if (options.success) {
+        showRecommend(options.dataList)
+    }
+}
+
+function showRecommend(result) {
+    const user_id = sessionStorage.getItem('sessionUser')
+    axios.get(`${c.url}/api/recommend`)
+        // { "user_id": user_id, "chooseFood_1": result.data.chooseFood_1, "chooseFood_2": result.data.chooseFood_2 })
+        .then(res => {
+            console.log("flask 연결 성공")
+        })
+        .catch( e => {
+            alert("로그인을 하시면 결과를 확인하실 수 있습니다.")
+        })    
+
+}
+
+
 export function RecommendSurvey () {
-    // const [chooseFood_1, setChooseFood_1] = useState()
-    // const [chooseFood_2, setChooseFood_2] = useState()
-
-    // useEffect(() => {
-    //     const fetchRecommend = async () => {
-    //       try {
-    //         setChooseFood_1(result.data.chooseFood_1);
-    //         console.log(result.data.chooseFood_1)
-    //         setChooseFood_2(result.data.chooseFood_2);
-    //         console.log(result.data.chooseFood_2)
-    //       } catch (e) {
-    //       }
-    //     };
-    //     fetchRecommend();
-    // }, []);
-  
-
     var model = new Survey.Model(json)
     return (
         <div className="container">
             <Survey.Survey
                 model={model}
+                // onSendResult={surveySendResult}
                 onComplete={onComplete}
-                onValueChanged={onValueChanged}
+                onGetResult={surveyGetResult}
             />
         </div>
     )
 }
+
+
+// export function RecommendSurvey () {
+//     var model = new Survey.Model(json)
+//     return (
+//         <div className="container">
+//             <Survey.Survey
+//                 model={model}
+//                 onComplete={onComplete}
+//                 onValueChanged={onValueChanged}
+//             />
+//         </div>
+//     )
+// }
 
 
 // class RecommendSurvey extends Component {

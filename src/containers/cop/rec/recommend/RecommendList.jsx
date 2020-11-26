@@ -8,10 +8,10 @@ import { PrimaryButton as PrimaryButtonBase } from "../../../../components/cmm/B
 import { Container as ContainerBase, ContentWithPaddingXl as ContentBase } from "../../../../components/cmm/Layouts.jsx";
 import { ReactComponent as CheckboxIcon } from "../../../../components/cmm/images/checkbox-circle.svg";
 
-const Container = tw(ContainerBase)`bg-yellow-900 text-gray-100 -mx-8 px-8`;
+const Container = tw(ContainerBase)`bg-yellow-900 text-gray-100 -mx-8 px-8 mb-20`;
 const ContentWithPaddingXl = tw(
   ContentBase
-)`relative z-10 mx-auto px-0 py-10 sm:px-6 md:px-8 lg:px-12 xl:px-24 sm:py-20 flex flex-col max-w-screen-xl`;
+)`relative z-10 mx-auto px-0 py-32 sm:px-6 md:px-8 lg:px-12 xl:px-24 sm:py-20 flex flex-col max-w-screen-xl`;
 const HeaderContainer = tw.div`mt-10 w-full flex flex-col items-center`;
 const Subheading = tw(SubheadingBase)`mb-4 text-gray-100`;
 const Heading = tw(SectionHeading)`w-full`;
@@ -81,7 +81,7 @@ export default function RecommendList ({
       price: ["오늘의 날씨는 어떤가요?"],
       oldPrice: "0",
       description: "오늘의 날씨를 입력해주세요.",
-      features: ["맑음", "흐림", "눈", "비", "텍스트 박스", "드롭다운 메뉴"],
+      features: ["맑음", "흐림", "눈", "비", "텍스트 박스"],
       url: "https://google.com"
     },
     {
@@ -94,9 +94,7 @@ export default function RecommendList ({
         "짠맛",
         "단짠",
         "고소한맛",
-        "아무거나",
-        "텍스트 박스(직접 입력)",
-        "드롭다운 메뉴"
+        "아무거나"
       ],
       url: "https://google.com",
       featured: "Most Popular"
@@ -112,7 +110,6 @@ export default function RecommendList ({
         "평범함",
         "모름",
         "텍스트 박스",
-        "드롭다운 메뉴"
       ],
       url: "https://google.com"
     }
