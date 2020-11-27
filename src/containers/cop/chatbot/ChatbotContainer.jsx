@@ -32,10 +32,6 @@ class Review extends Component {
                 <table>
                     <tbody>
                         <tr>
-                            <td>챗봇 번호</td>
-                            <td>{chatbot_id.value}</td>
-                        </tr>
-                        <tr>
                             <td>선호하는 맛</td>
                             <td>{tasty.value}</td>
                         </tr>
@@ -46,6 +42,10 @@ class Review extends Component {
                         <tr>
                             <td>오늘의 기분</td>
                             <td>{feeling.value}</td>
+                        </tr>
+                        <tr>
+                            <td>인원</td>
+                            <td>{chatbot_id.value}</td>
                         </tr>
                     </tbody>
                 </table>
