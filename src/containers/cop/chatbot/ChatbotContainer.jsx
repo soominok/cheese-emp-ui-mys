@@ -75,10 +75,10 @@ class Answer extends Component {
         axios.post(`${c.url}/api/chatbot`, 
         { "chatbot_id": chatbot_id.value, "tasty": tasty.value, "texture": texture.value, "feeling": feeling.value })
         .then(res => {
-            alert("성공")
+            console.log("성공")
         })
         .catch( e => {
-            alert("실패")
+            console.log("실패")
         })
     }
     render() {

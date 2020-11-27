@@ -37,7 +37,7 @@ export const userService = {
     }
     const resp = await axios(req)
     const data = resp.data
-    alert(`${data.name}'님, 환영합니다~! `)
+    alert(`환영합니다~! `)
     return data
   }
   
@@ -84,7 +84,7 @@ export const userService = {
     const resp = await axios(req)
     // alert('user service resp: ' + resp)
     const data = resp.data
-    alert(` ${data.name}님, 환영합니다. 로그인 후 이용해주세요!`)
+    alert(`환영합니다. 로그인 후 이용해주세요!`)
     return data
   }
   
