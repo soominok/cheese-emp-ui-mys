@@ -20,7 +20,7 @@ const Heading = styled.h1`
   }
 `;
 
-const Actions = styled.div`
+const Actions = styled.form`
   ${tw`relative max-w-md text-center mx-auto lg:mx-0`}
   input {
     ${tw`sm:pr-48 pl-8 py-4 sm:py-5 rounded-full border-2 w-full font-medium focus:outline-none transition duration-300 focus:border-primary-500 hover:border-gray-500`}
@@ -39,13 +39,12 @@ export default function BackgroundAsImageWithCenteredContent() {
           <Content>
             <Heading>
                 <h1>Find Your Cheese !</h1>
-                Pic 2 Cheeese 와 함께<br/>
                 나에게 맞는 치즈를 추천 받아보세요.
             </Heading>
             <br/>
-            <Actions>
+            <Actions action="/signup">
               <input type="text" placeholder="Your E-mail Address" />
-              <button >지금 시작하기</button>
+              <button herf="/signup">지금 시작하기</button>
             </Actions>
           </Content>
         </HeroContainer>

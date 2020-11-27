@@ -53,7 +53,7 @@ export default function VerticalWithAlternateImageAndText() {
     },
     {
       imageSrc:
-        "https://i.pinimg.com/236x/52/63/23/526323b4d64f8617dcd4f9db572008f4.jpg",
+        "https://img-cf.kurly.com/shop/data/goodsview/20170222/gv40000000201_1.jpg",
       description: "안녕하세요",
       title: "AI가 추천해주는",
       subtitle: "Pic 2 Cheese가 엄선하고 AI가 매칭해주는 큐레이션",

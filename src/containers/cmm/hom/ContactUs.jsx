@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import { css } from 'styled-components/macro'; //eslint-disable-line
 import {ReactComponent as SvgDotPatternIcon} from '../../../components/cmm/images/dot-pattern.svg'
+import { Signup } from '../../usr/user';
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
 const FormContainer = styled.div`
@@ -36,8 +37,8 @@ export default function SimpleContactUs() {
           <div tw="mx-auto max-w-4xl">
             <h2>pic 2 Cheese의 혜택! 지금 받으세요.</h2>
             <h4>pic 2 cheese 챗봇으로 상담 해 보세요. 당신에게 꼭 맞는 치즈를 추천해 드립니다. </h4>
-            <form action="#">
-              <SubmitButton type="submit" value="Submit" href="/signup" >지금 시작하기</SubmitButton>
+            <form action="/signup">
+              <SubmitButton type="submit" value="Submit">지금 시작하기</SubmitButton>
             </form>
           </div>
           <SvgDotPattern1 />

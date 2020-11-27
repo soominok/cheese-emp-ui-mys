@@ -15,16 +15,17 @@ class Review extends Component {
         this.state = {
             tasty: '',
             texture: '',
+            feeling: ''
         }
     }
 
     componentWillMount() {
         const { steps } = this.props;
-        const { chatbot_id, tasty, texture } = steps
-        this.setState({ chatbot_id, tasty, texture })
+        const { chatbot_id, tasty, texture, feeling } = steps
+        this.setState({ chatbot_id, tasty, texture, feeling })
     }
     render () {
-        const { chatbot_id, tasty, texture } = this.state
+        const { chatbot_id, tasty, texture, feeling } = this.state
         return (
             <div style={{ width: '100%' }}>
                 <h1>[설문조사 내역]</h1>
@@ -41,6 +42,10 @@ class Review extends Component {
                         <tr>
                             <td>선호하는 식감</td>
                             <td>{texture.value}</td>
+                        </tr>
+                        <tr>
+                            <td>오늘의 기분</td>
+                            <td>{feeling.value}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -64,10 +69,10 @@ class Answer extends Component {
     }
     componentWillMount() {
         const {steps} = this.props
-        const { chatbot_id, tasty, texture } = steps
+        const { chatbot_id, tasty, texture, feeling } = steps
         // const user_id = sessionStorage.getItem('sessionUser')
         axios.post(`${c.url}/api/chatbot`, 
-        { "chatbot_id": chatbot_id.value, "tasty": tasty.value, "texture": texture.value })
+        { "chatbot_id": chatbot_id.value, "tasty": tasty.value, "texture": texture.value, "feeling": feeling.value })
         .then(res => {
             alert("성공")
         })
@@ -109,13 +114,14 @@ class Result extends Component {
         this.state = {
             tasty: '',
             texture: '',
+            feeling: ''
         }
     }
 
     componentWillMount() {
         const { steps } = this.props;
-        const { chatbot_id, tasty, texture } = steps
-        this.setState({ chatbot_id, tasty, texture })
+        const { chatbot_id, tasty, texture, feeling } = steps
+        this.setState({ chatbot_id, tasty, texture, feeling })
     }
     render () {
         return (
@@ -215,7 +221,7 @@ class MyChatbot extends Component {
                     },
                     {
                         id: 'question1',
-                        message: '치즈나 음식의 어떤 맛을 선호하시나요?',
+                        message: '어떤 맛을 선호하시나요?',
                         trigger: 'tasty',
                     },
                     {
@@ -237,10 +243,25 @@ class MyChatbot extends Component {
                     {
                         id: 'texture',
                         options: [
-                            { value: 1, label: '후레쉬', trigger: 'chatbot_number' },
-                            { value: 2, label: '소프트', trigger: 'chatbot_number' },
-                            { value: 3, label: '세미하드', trigger: 'chatbot_number' },
-                            { value: 4, label: '하드', trigger: 'chatbot_number' },
+                            { value: 1, label: '후레쉬', trigger: 'question3' },
+                            { value: 2, label: '소프트', trigger: 'question3' },
+                            { value: 3, label: '세미하드', trigger: 'question3' },
+                            { value: 4, label: '하드', trigger: 'question3' },
+                        ],
+                    },
+                    {
+                        id: 'question3',
+                        message: '오늘 기분은 어떤가요?',
+                        trigger: 'feeling',
+
+                    },
+                    {
+                        id: 'feeling',
+                        options: [
+                            { value: 1, label: '행복', trigger: 'chatbot_number' },
+                            { value: 2, label: '좋음', trigger: 'chatbot_number' },
+                            { value: 3, label: '보통', trigger: 'chatbot_number' },
+                            { value: 4, label: '나쁨', trigger: 'chatbot_number' },
                         ],
                     },
                     {
@@ -316,7 +337,7 @@ class MyChatbot extends Component {
                     },
                     {
                         id: 'chatbot_number',
-                        message: '고객님의 챗봇 번호를 입력해주세요.',
+                        message: '몇 명이서 드실 건가요?',
                         trigger: 'chatbot_id'
                     },
                     {
@@ -324,16 +345,6 @@ class MyChatbot extends Component {
                         user: true,
                         trigger: 'review'
                     },
-                    // {
-                    //     id: 'user_number',
-                    //     message: '고객 아이디를 적어주세요.',
-                    //     trigger: 'user_id'
-                    // },
-                    // {
-                    //     id: 'user_id',
-                    //     user: true,
-                    //     trigger: 'review'
-                    // },
                     {
                         id: 'review',
                         component: <Review/>,

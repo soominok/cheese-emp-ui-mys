@@ -7,7 +7,7 @@ import { Container as ContainerBase } from "../../../components/cmm/Layouts";
 import tw from "twin.macro"; 
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import illustration from "../../../components/cmm/images/signup-illustration.svg";
+import cheeseRegister from "../../../components/cmm/images/cheese/cheeseImg2.png";
 
 
 import { ReactComponent as SignUpIcon } from "feather-icons/dist/icons/user-plus.svg";
@@ -44,7 +44,7 @@ const IllustrationImage = styled.div`
   ${tw`m-12 xl:m-16 w-full max-w-lg bg-contain bg-center bg-no-repeat`}
 `;
 
-const illustrationImageSrc = illustration,
+const cheeseRegisterImageSrc = cheeseRegister,
       headingText = "Sign Up For Pic 2 Cheese",
       submitButtonText = "Sign Up",
       SubmitButtonIcon = SignUpIcon,
@@ -187,7 +187,7 @@ export default function SignUp () {
             </MainContent>
           </MainContainer>
           <IllustrationContainer>
-            <IllustrationImage imageSrc={illustrationImageSrc} />
+            <IllustrationImage imageSrc={cheeseRegisterImageSrc} />
           </IllustrationContainer>
         </Content>
       </Container>
