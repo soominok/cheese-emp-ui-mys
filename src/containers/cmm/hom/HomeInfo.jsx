@@ -51,7 +51,7 @@ export default function VerticalWithAlternateImageAndText() {
     },
     {
       imageSrc:
-        "https://img-cf.kurly.com/shop/data/goods/151073128727l0.jpg터",
+        "https://img-cf.kurly.com/shop/data/goods/151073128727l0.jpg",
       title: "AI가 추천해주는",
       subtitle: "Pic 2 Cheese가 엄선하고 AI가 매칭해주는 큐레이션",
       url: "https://timerse.com"
