@@ -13,6 +13,7 @@ class Review extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            chatbot_id: '',
             tasty: '',
             texture: '',
             feeling: ''
