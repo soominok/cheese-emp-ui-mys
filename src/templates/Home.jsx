@@ -16,9 +16,7 @@ export default function Home () {
   return( <div className="home">
   {/* <Header /> */}
   <AnimationRevealPage>
-    <Tooltip title="구매 고객 리뷰 리스트 CRUD">
     <Chatbot/>
-    </Tooltip>
     <MainBackground />
     <HomeInfo />
   <FAQ

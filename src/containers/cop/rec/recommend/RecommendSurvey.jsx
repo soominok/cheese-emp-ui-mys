@@ -20,7 +20,7 @@ function onComplete(result) {
 
     const user_id = sessionStorage.getItem('sessionUser')
     axios.post(`${c.url}/api/recommend`, 
-        { "user_id": user_id, "chooseFood_1": result.data.chooseFood_1, "chooseFood_2": result.data.chooseFood_2 })
+        { "user_id": user_id, "chooseFood_1": result.data.chooseFood_1, "chooseFood_2": result.data.chooseFood_2, "chooseFood_3": result.data.chooseFood_3, "chooseFood_4": result.data.chooseFood_4 })
         .then(res => {
             // res.header["Access-Control-Allow-Origin"] =  "*"
             alert("성공")

@@ -17,7 +17,7 @@ import { PrimaryButton as PrimaryButtonBase } from "../../../../components/cmm/B
 import RecommendSurvey from "./RecommendSurvey"
 
 const PrimaryBackgroundContainer = tw.div`-mx-8 px-8 mt-16 mb-20 lg:mt-0 lg:ml-16 bg-white text-gray-100`;
-const Container = tw(ContainerBase)`mt-10 mb-48 mx-16`;
+const Container = tw(ContainerBase)`mt-32 mb-48 mx-16`;
 const Row = tw.div`flex items-center flex-col lg:flex-row`;
 const Column = tw.div`lg:w-1/2`;
 const TextColumn = tw.div`text-center lg:text-left`;
