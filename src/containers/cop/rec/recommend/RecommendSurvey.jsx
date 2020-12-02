@@ -23,10 +23,10 @@ function onComplete(result) {
         { "user_id": user_id, "chooseFood_1": result.data.chooseFood_1, "chooseFood_2": result.data.chooseFood_2, "chooseFood_3": result.data.chooseFood_3, "chooseFood_4": result.data.chooseFood_4 })
         .then(res => {
             // res.header["Access-Control-Allow-Origin"] =  "*"
-            alert("성공")
+            console.log("성공")
         })
         .catch( e => {
-            alert("고객님의 치즈 취향을 분석중입니다.")
+            console.log("api axios 실패")
         })    
 }
 

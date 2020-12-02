@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from 'axios'
+import { context as c } from '../../../../modules/context'
 import { motion } from "framer-motion";
 import tw from "twin.macro";
 import styled, { css } from "styled-components/macro"; //eslint-disable-line
@@ -8,6 +10,17 @@ import { SectionDescription } from "../../../../components/cmm/Typography.jsx";
 import { ReactComponent as ChevronDownIcon } from "feather-icons/dist/icons/chevron-down.svg";
 
 const PrimaryBackgroundContainer = tw(Container)`-mx-8 px-8 bg-yellow-500 text-gray-100 text-black`;
+
+const ThreeColumn = tw.div`flex flex-col items-center lg:items-stretch lg:flex-row flex-wrap`;
+const Column = tw.div`mt-24 lg:w-1/3`;
+const Card = tw.div`lg:mx-4 xl:mx-8 max-w-sm lg:max-w-xs`;
+const Image = styled.div(props => [
+  `background-image: url("${props.imageSrc}");`,
+  tw`bg-cover bg-center h-80 lg:h-64 rounded`
+]);
+const Category = tw.div`mt-4 text-secondary-100 font-bold text-sm`;
+const Title = tw.h4`mt-2 leading-relaxed font-bold text-lg`;
+const Contents = tw.a`inline-block mt-2 text-sm text-primary-500 font-bold cursor-pointer transition duration-300 border-b-2 border-transparent hover:border-primary-500`;
 
 const HeadingContainer = tw.div``;
 const Subheading = tw(SubheadingBase)`text-center text-gray-100 mb-4`;
@@ -26,6 +39,28 @@ const QuestionToggleIcon = styled(motion.span)`
   }
 `;
 const Answer = tw(motion.div)`hidden text-sm font-normal mt-4 text-gray-300`;
+
+const RecommendInfo = () => {
+  const [name, setName] = useState()
+  const [brand, setBrand] = useState()
+  const [texture, setTexture] = useState()
+  const [type, setType] = useState()
+  const [content, setContent] = useState()
+  const [img, setImg] = useState()
+
+  const user_id = sessionStorage.getItem('sessionUser')
+  axios.get(`${c.url}/api/recommend/${user_id}`)
+  .then(res => {
+    setName(res.data['name'])
+    setBrand(res.data['brand'])
+    setTexture(res.data['texture'])
+    setType(res.data['type'])
+    setContent(res.data['content'])
+    setImg(res.data['img'])
+  })
+  .catch( e => {alert(`Search failed`) 
+  })
+}
 
 export default function RecommendResult ({
   subheading = "",
@@ -117,6 +152,16 @@ export default function RecommendResult ({
           <Heading>{heading}</Heading>
           <Description>{description}</Description>
         </HeadingContainer>
+        <ThreeColumn>
+          <Column>
+            <Card>
+              <Image imageSrc={img}/>
+              <Title>{name}</Title>
+              <Contents>{brand}</Contents>
+              <Category>{content}</Category>
+            </Card>
+          </Column>
+        </ThreeColumn>
         <FaqsContainer>
           <FaqsColumn>{faqCol1}</FaqsColumn>
           <FaqsColumn>{faqCol2}</FaqsColumn>

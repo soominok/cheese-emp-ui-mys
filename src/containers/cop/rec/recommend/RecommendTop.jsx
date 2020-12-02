@@ -14,8 +14,8 @@ import { SectionDescription } from "../../../../components/cmm/Typography.jsx";
 import { PrimaryButton as PrimaryButtonBase } from "../../../../components/cmm/Buttons.jsx";
 // import logoImageSrc from "../images/logo-light.svg";
 // import serverIllustrationImageSrc from "../../../../components/cmm/images/server-illustration-2.svg";
-import RecommendSurvey from "./RecommendSurvey"
-
+// import RecommendSurvey from "./RecommendSurvey"
+import RecommendPick from "./RecommendPick"
 const PrimaryBackgroundContainer = tw.div`-mx-8 px-8 mt-16 mb-20 lg:mt-0 lg:ml-16 bg-white text-gray-100`;
 const Container = tw(ContainerBase)`mt-32 mb-48 mx-16`;
 const Row = tw.div`flex items-center flex-col lg:flex-row`;
@@ -52,7 +52,8 @@ export default function RecommendTop ({
                 <Image src={imageSrc} />
               </IllustrationColumn> */}
             </Row>
-            <RecommendSurvey/>
+            {/* <RecommendSurvey/> */}
+            <RecommendPick/>
           </ContentWithVerticalPadding>
         </Container>
       </Content2Xl>
