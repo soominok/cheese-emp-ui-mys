@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect, BrowserRouter } from 
 import { Header, Footer } from './components/cmm'
 import {Home, Cheese, Recommend, Review, Subscribe} from './templates'
 import {Login, Signup, UserInfo } from './containers/usr/user'
+import { RecommendResult } from './containers/cop/rec/recommend'
 // import { Cart } from "./containers/cop/cart";
 // import { Cart } from "./templates/Cart";
 
@@ -29,6 +30,8 @@ export default function App(){
                     <Route path='/userlist' component={ UserList }/> */}
 
                     <Route path='/recommend' component={Recommend}></Route>
+                    <Route path='/recommend-result' component={RecommendResult}/>
+
                     <Route path='/subscribe' component={Subscribe}></Route>
                     <Route path='/cheese' component={Cheese}></Route>
                     <Route path='/review' component={Review}></Route>

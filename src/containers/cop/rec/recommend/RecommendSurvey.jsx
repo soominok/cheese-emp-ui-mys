@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from 'prop-types'
+import React from "react";
 import axios from 'axios'
 import { context as c } from '../../../../modules/context'
 
@@ -11,9 +10,9 @@ import { json } from './Survey_json'
 
 Survey.StylesManager.applyTheme("modern");
 
-function onValueChanged(result) {
-    console.log("value changed!" + JSON.stringify(result))
-}
+// function onValueChanged(result) {
+//     console.log("value changed!" + JSON.stringify(result))
+// }
 
 function onComplete(result) {
     console.log("Complete!" + JSON.stringify(result.data))
@@ -30,22 +29,22 @@ function onComplete(result) {
         })    
 }
 
-var resultId = 'result_id'
+// var resultId = 'result_id'
 
-var surveySendResult = function (result) {
-    console.log("Complete!" + JSON.stringify(result.data))
+// var surveySendResult = function (result) {
+//     console.log("Complete!" + JSON.stringify(result.data))
 
-    const user_id = sessionStorage.getItem('sessionUser')
-    axios.post(`${c.url}/api/recommend`, 
-        { "user_id": user_id, "chooseFood_1": result.data.chooseFood_1, "chooseFood_2": result.data.chooseFood_2 })
-        .then(res => {
-            // res.header["Access-Control-Allow-Origin"] =  "*"
-            alert("성공")
-        })
-        .catch( e => {
-            alert("고객님의 치즈 취향을 분석중입니다.")
-        })    
-}
+//     const user_id = sessionStorage.getItem('sessionUser')
+//     axios.post(`${c.url}/api/recommend`, 
+//         { "user_id": user_id, "chooseFood_1": result.data.chooseFood_1, "chooseFood_2": result.data.chooseFood_2 })
+//         .then(res => {
+//             // res.header["Access-Control-Allow-Origin"] =  "*"
+//             alert("성공")
+//         })
+//         .catch( e => {
+//             alert("고객님의 치즈 취향을 분석중입니다.")
+//         })    
+// }
 
 var surveyGetResult = function (s, options) {
     if (options.success) {
@@ -54,7 +53,7 @@ var surveyGetResult = function (s, options) {
 }
 
 function showRecommend(result) {
-    const user_id = sessionStorage.getItem('sessionUser')
+    // const user_id = sessionStorage.getItem('sessionUser')
     axios.get(`${c.url}/api/recommend`)
         // { "user_id": user_id, "chooseFood_1": result.data.chooseFood_1, "chooseFood_2": result.data.chooseFood_2 })
         .then(res => {

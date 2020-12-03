@@ -4,6 +4,8 @@ import axios from 'axios'
 import { useEffect, useState } from 'react';
 import { context as c } from '../modules/context'
 // import { reviewActions } from '../modules/cop/rev/review/review.action'
+import { ChatbotContainer as Chatbot } from "../containers/cop/chatbot"
+
 
 import '../App.css';
 import styled from "styled-components";
@@ -75,6 +77,7 @@ function TablePaginationActions (props) {
 
   return (
     <div className={classes.root}>
+      <Chatbot/>
       <IconButton
         onClick={handleFirstPageButtonClick}
         disabled={page === 0}

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from 'prop-types'
-import axios from 'axios'
-import { context as c } from '../../../../modules/context'
+import React from "react";
+// import PropTypes from 'prop-types'
+// import axios from 'axios'
+// import { context as c } from '../../../../modules/context'
 
 import * as Survey from "survey-react";
 import "survey-react/modern.css";

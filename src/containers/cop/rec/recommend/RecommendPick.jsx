@@ -5,7 +5,8 @@ import {context as c} from '../../../../modules/context'
 import * as Survey from "survey-react";
 import './recommend.css'
 import "survey-react/survey.css";
-import RecommendResult from './RecommendResult'
+import RecommendLoad from './RecommendLoad'
+// import RecommendResult from './RecommendResult'
 
 import { json } from './Survey_json'
 
@@ -43,7 +44,7 @@ class SurveyComponent extends Component {
             />
         ) : null;
         var onCompleteComponent = this.state.isCompleted ? (
-            <RecommendResult/>
+            <RecommendLoad/>
         ) : null;
         return (
             <div>

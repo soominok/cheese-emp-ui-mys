@@ -1,5 +1,5 @@
 export {default as RecommendList} from './RecommendList'
 export {default as RecommendResult} from './RecommendResult'
 export {default as RecommendTop} from './RecommendTop'
-export {default as ModalAction} from './ModalAction'
 export {default as RecommendPick} from './RecommendPick'
+export {default as RecommendLoad} from './RecommendLoad'

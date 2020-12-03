@@ -1,34 +1,37 @@
 import React, { useState } from "react";
 import axios from 'axios'
 import { context as c } from '../../../../modules/context'
+
 import { motion } from "framer-motion";
 import tw from "twin.macro";
 import styled, { css } from "styled-components/macro"; //eslint-disable-line
 import { Container, ContentWithPaddingXl } from "../../../../components/cmm/Layouts.jsx";
-import { SectionHeading, Subheading as SubheadingBase } from "../../../../components/cmm/Headings.jsx";
-import { SectionDescription } from "../../../../components/cmm/Typography.jsx";
+import { SectionHeading } from "../../../../components/cmm/Headings.jsx";
+// import { SectionDescription } from "../../../../components/cmm/Typography.jsx";
 import { ReactComponent as ChevronDownIcon } from "feather-icons/dist/icons/chevron-down.svg";
+import { ChatbotContainer as Chatbot } from "../../../cop/chatbot"
 
-const PrimaryBackgroundContainer = tw(Container)`-mx-8 px-8 bg-yellow-500 text-gray-100 text-black`;
+const PrimaryBackgroundContainer = tw(Container)`px-4 bg-yellow-500 text-gray-100 text-black text-center`;
 
-const ThreeColumn = tw.div`flex flex-col items-center lg:items-stretch lg:flex-row flex-wrap`;
-const Column = tw.div`mt-24 lg:w-1/3`;
+// const ThreeColumn = tw.div`flex flex-col items-center lg:items-stretch lg:flex-row flex-wrap`;
+const ThreeColumn = tw.div`text-center mx-0`;
+const Column = tw.div`mt-24 mx-96`;
 const Card = tw.div`lg:mx-4 xl:mx-8 max-w-sm lg:max-w-xs`;
 const Image = styled.div(props => [
   `background-image: url("${props.imageSrc}");`,
   tw`bg-cover bg-center h-80 lg:h-64 rounded`
 ]);
 const Category = tw.div`mt-4 text-secondary-100 font-bold text-sm`;
-const Title = tw.h4`mt-2 leading-relaxed font-bold text-lg`;
-const Contents = tw.a`inline-block mt-2 text-sm text-primary-500 font-bold cursor-pointer transition duration-300 border-b-2 border-transparent hover:border-primary-500`;
+const Title = tw.h4`inline-block mt-2 leading-relaxed font-bold text-lg cursor-pointer transition duration-300 border-b-2 border-transparent hover:border-black`;
+const Contents = tw.div`mt-2 text-sm text-primary-500 font-bold `;
 
 const HeadingContainer = tw.div``;
-const Subheading = tw(SubheadingBase)`text-center text-gray-100 mb-4`;
+// const Subheading = tw(SubheadingBase)`text-center text-gray-100 mb-4`;
 const Heading = tw(SectionHeading)``;
-const Description = tw(SectionDescription)`mx-auto text-center text-gray-300`;
+// const Description = tw(SectionDescription)`mx-auto text-center text-gray-300`;
 
 const FaqsContainer = tw.div`mt-10 sm:mt-16 w-full flex-1 lg:flex justify-between items-start max-w-screen-lg mx-auto`;
-const FaqsColumn = tw.div`w-full lg:max-w-lg lg:mr-12 last:mr-0`;
+const FaqsColumn = tw.div`w-full lg:max-w-lg lg:mr-8 last:mr-0`;
 const Faq = tw.div`select-none cursor-pointer border-b-2 border-yellow-300 hover:border-yellow-500 transition-colors duration-300 py-6`;
 const Question = tw.div`flex justify-between items-center`;
 const QuestionText = tw.div`text-sm sm:text-lg font-semibold tracking-wide`;
@@ -40,32 +43,12 @@ const QuestionToggleIcon = styled(motion.span)`
 `;
 const Answer = tw(motion.div)`hidden text-sm font-normal mt-4 text-gray-300`;
 
-const RecommendInfo = () => {
-  const [name, setName] = useState()
-  const [brand, setBrand] = useState()
-  const [texture, setTexture] = useState()
-  const [type, setType] = useState()
-  const [content, setContent] = useState()
-  const [img, setImg] = useState()
-
-  const user_id = sessionStorage.getItem('sessionUser')
-  axios.get(`${c.url}/api/recommend/${user_id}`)
-  .then(res => {
-    setName(res.data['name'])
-    setBrand(res.data['brand'])
-    setTexture(res.data['texture'])
-    setType(res.data['type'])
-    setContent(res.data['content'])
-    setImg(res.data['img'])
-  })
-  .catch( e => {alert(`Search failed`) 
-  })
-}
 
 export default function RecommendResult ({
   subheading = "",
-  heading = "당신이 좋아하는 치즈상품은 '[브리미]보코치니' 입니다.",
-  description = "새알을 빚어놓은 듯 깜찍한 미니 모짜렐라",
+  heading1 = "당신이 좋아하는 치즈상품은",
+  heading2 = "입니다.",
+  // description = "새알을 빚어놓은 듯 깜찍한 미니 모짜렐라",
   faqs = [
     {
       question: "영양정보",
@@ -144,23 +127,42 @@ export default function RecommendResult ({
 
     return null;
   });
+
+  const [recommends, setRecommends] = useState([])
+
+  const user_id = sessionStorage.getItem('sessionUser')
+  axios.get(`${c.url}/api/recommend/${user_id}`)
+  .then(res => {
+    setRecommends(res.data)
+  })
+  .catch( e => {alert(`Search failed`) 
+  })
+  // const recommendsKeys = Object.keys(recommends);
+
   return (
     <PrimaryBackgroundContainer>
+      <Chatbot/>
       <ContentWithPaddingXl>
         <HeadingContainer>
-          {subheading && <Subheading>{subheading}</Subheading>}
-          <Heading>{heading}</Heading>
-          <Description>{description}</Description>
+          {recommends.map((recommend) => (
+            // {subheading && <Subheading>{subheading}</Subheading>}
+            <Heading>{heading1}<br/>[{recommend.name}]{heading2}</Heading>
+            // <Description>{description}</Description> 
+          ))}
         </HeadingContainer>
         <ThreeColumn>
-          <Column>
-            <Card>
-              <Image imageSrc={img}/>
-              <Title>{name}</Title>
-              <Contents>{brand}</Contents>
-              <Category>{content}</Category>
-            </Card>
-          </Column>
+          {recommends.map((recommend) => (
+            <Column key={recommend.cheese_id}>
+              <Card>
+                <Image imageSrc={recommend.img}/>
+                <Title a>{recommend.name}</Title>
+                <Contents>{recommend.brand}</Contents>
+                <Contents>{recommend.texture} / {recommend.types}</Contents>
+                <Category>{recommend.content}</Category>
+                {/* <Link href={cheese.content}>Read Post</Link> */}
+              </Card>
+            </Column>
+          ))}
         </ThreeColumn>
         <FaqsContainer>
           <FaqsColumn>{faqCol1}</FaqsColumn>
