@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios'
 import { context as c } from '../../../../modules/context'
 
@@ -130,29 +130,38 @@ export default function RecommendResult ({
 
   const [recommends, setRecommends] = useState([])
 
-  const user_id = sessionStorage.getItem('sessionUser')
-  axios.get(`${c.url}/api/recommend/${user_id}`)
-  .then(res => {
-    setRecommends(res.data)
-  })
-  .catch( e => {alert(`Search failed`) 
-  })
-  // const recommendsKeys = Object.keys(recommends);
+  useEffect(() => {
+    const fetchRecommend = async () => {
+      try {
+
+        const user_id = sessionStorage.getItem('sessionUser')
+        const response = await axios.get(
+          `${c.url}/api/recommend/${user_id}`
+        );
+
+        setRecommends(response.data)
+        console.log(response.data)
+      } catch (e) {
+        alert(`Search fail`)
+      }
+    };
+
+    fetchRecommend();
+  }, []);
+
 
   return (
     <PrimaryBackgroundContainer>
       <Chatbot/>
       <ContentWithPaddingXl>
         <HeadingContainer>
-          {recommends.map((recommend) => (
-            // {subheading && <Subheading>{subheading}</Subheading>}
-            <Heading>{heading1}<br/>[{recommend.name}]{heading2}</Heading>
-            // <Description>{description}</Description> 
-          ))}
+        {recommends.map(recommend => (
+          <Heading>{heading1}<br/>[{recommend.name}]{heading2}</Heading>
+        ))}
         </HeadingContainer>
         <ThreeColumn>
-          {recommends.map((recommend) => (
-            <Column key={recommend.cheese_id}>
+          {recommends.map(recommend => (
+            <Column  key={recommend.cheese_id}>
               <Card>
                 <Image imageSrc={recommend.img}/>
                 <Title a>{recommend.name}</Title>
